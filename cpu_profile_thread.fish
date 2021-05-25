@@ -1,0 +1,1 @@
+perf record -F 99 -a --call-graph dwarf -p (pgrep thread_perf) -- sleep 30 && perf script > out.perf && ~/workspace/FlameGraph/stackcollapse-perf.pl --all out.perf > out.folded && ~/workspace/FlameGraph/flamegraph.pl out.folded --hash > thread_framegraph.svg

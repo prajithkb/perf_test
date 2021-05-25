@@ -1,0 +1,134 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'perf_test'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=perf_test"
+                ],
+                "filter": {
+                    "name": "perf_test",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'async_perf'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=async_perf",
+                    "--package=perf_test"
+                ],
+                "filter": {
+                    "name": "async_perf",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "--count",
+                "10000",
+                "--files",
+                "10",
+                "--tasks",
+                "100",
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'async_perf'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=async_perf",
+                    "--package=perf_test"
+                ],
+                "filter": {
+                    "name": "async_perf",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'thread_perf'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=thread_perf",
+                    "--package=perf_test"
+                ],
+                "filter": {
+                    "name": "thread_perf",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "--count",
+                "100",
+                "--files",
+                "10",
+                "--tasks",
+                "100",
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'thread_perf'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=thread_perf",
+                    "--package=perf_test"
+                ],
+                "filter": {
+                    "name": "thread_perf",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug benchmark 'bench'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bench=bench",
+                    "--package=perf_test"
+                ],
+                "filter": {
+                    "name": "bench",
+                    "kind": "bench"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

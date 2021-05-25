@@ -1,0 +1,1 @@
+sudo offcputime-bpfcc -df -p (pgrep async_perf) 30 > out.stacks && ~/workspace/FlameGraph/flamegraph.pl --color=io --title="Off-CPU Time Flame Graph" --countname=us < out.stacks > async_off_cpu.svg

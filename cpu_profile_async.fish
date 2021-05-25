@@ -1,0 +1,1 @@
+perf record -F 49 -a --call-graph dwarf -p (pgrep async_perf) -- sleep 30 && perf script > out.perf && ~/workspace/FlameGraph/stackcollapse-perf.pl --all out.perf > out.folded && ~/workspace/FlameGraph/flamegraph.pl out.folded --hash > async_framegraph.svg

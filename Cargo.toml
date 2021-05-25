@@ -1,0 +1,32 @@
+[package]
+name = "perf_test"
+version = "0.1.0"
+authors = ["prajith"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+threadpool = "1.0"
+structopt = "0.3"
+futures = "0.3"
+
+
+[profile.release]
+debug = true
+
+[[bin]]
+name = "async_perf"
+path = "src/async_main.rs"
+
+[[bin]]
+name = "thread_perf"
+path = "src/thread_main.rs"
+
+[dev-dependencies]
+criterion = "0.3"
+
+[[bench]]
+name = "bench"
+harness = false
